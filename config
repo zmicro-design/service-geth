@@ -1,0 +1,8 @@
+export SERVICE_GETH_NAME=geth
+
+export SERVICE_GETH_DATA=$(service::get_data_path $PLUGIN_GETH_NAME)
+export SERVICE_GETH_LOGS=$(service::get_logs_path $PLUGIN_GETH_NAME)
+export SERVICE_GETH_CONFIGS=$(service::get_configs_path $PLUGIN_GETH_NAME)/config
+
+export SERVICE_GETH_VERSION=v1.10.8
+export SERVICE_GETH_PORT=3334

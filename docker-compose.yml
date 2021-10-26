@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  geth:
+    restart: always
+    image: ethereum/client-go:${SERVICE_GETH_VERSION}
+    ports:
+      - ${SERVICE_GETH_PORT}:3334
+    environment:
+      TZ: Asia/Shanghai
+    entrypoint: geth --mainnet --syncmode "light" --ws --ws.addr 0.0.0.0 --ws.port 3334 --datadir /data --maxpeers 500
+    volumes:
+      - ${SERVICE_GETH_DATA}:/data
+
+networks:
+  default:
+    external: true
+    name: compose-ingress
