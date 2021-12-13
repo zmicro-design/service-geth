@@ -6,6 +6,10 @@ services:
     image: ethereum/client-go:${SERVICE_GETH_VERSION}
     ports:
       - ${SERVICE_GETH_PORT}:3334
+      # sync peers:
+      #   https://blog.csdn.net/sail331x/article/details/107100080
+      - 0.0.0.0:30303:30303/tcp
+      - 0.0.0.0:30303:30303/udp
     environment:
       TZ: Asia/Shanghai
     entrypoint: geth --mainnet --syncmode "light" --ws --ws.addr 0.0.0.0 --ws.port 3334 --datadir /data --maxpeers 500
